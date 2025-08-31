@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Devlyrics — Web, Mobile & SQA in Lahore</title>
+  <meta name="description" content="Devlyrics is a Lahore-based software house delivering web development, mobile app development, and SQA/QA services. Reliable teams, modern stacks, on-time delivery." />
+  <meta name="author" content="Devlyrics" />
+  <meta property="og:title" content="Devlyrics — Web, Mobile & SQA in Lahore" />
+  <meta property="og:description" content="Web development, mobile app development, and SQA from a Lahore-based team you can trust." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'><rect width='100%' height='100%' fill='%230a2540'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='64' font-family='Arial'>Devlyrics</text></svg>" />
+  <meta name="theme-color" content="#0a2540" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230a2540'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-size='32' font-family='Arial' fill='white'>D</text></svg>">
+  <style>
+    :root{
+      --ink:#0a2540; /* deep navy */
+      --sky:#eff6ff; /* light background */
+      --plum:#6b46c1; /* accent */
+      --mint:#14b8a6; /* accent 2 */
+      --text:#0f172a; /* slate-900 */
+      --muted:#475569; /* slate-600 */
+      --card:#ffffff;
+      --ring: rgba(20,184,166,0.35);
+      --shadow: 0 10px 30px rgba(2,8,23,.08);
+      --radius: 18px;
+    }
+    *, *::before, *::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif; color:var(--text); background:linear-gradient(180deg,var(--sky),#fff)}
+    a{color:var(--ink); text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{width:min(1150px, 92vw); margin-inline:auto}
+    .grid{display:grid; gap:24px}
+    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.9rem 1.2rem; border-radius:999px; font-weight:600; border:1px solid transparent; cursor:pointer; transition:all .2s ease}
+    .btn.primary{background:var(--mint); color:#002b2b}
+    .btn.primary:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
+    .btn.outline{border-color:#cbd5e1}
+    .chip{display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .7rem; border-radius:999px; font-weight:600; font-size:.8rem; background:#e0f2fe; color:#075985}
+    header{position:sticky; top:0; backdrop-filter:saturate(140%) blur(8px); background:rgba(255,255,255,.75); border-bottom:1px solid #e2e8f0; z-index:50}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:.7rem; font-weight:800; letter-spacing:.2px}
+    .logo{width:38px; height:38px; display:grid; place-items:center; border-radius:12px; color:white; background:radial-gradient(100% 100% at 100% 0, var(--plum), var(--ink)); box-shadow:var(--shadow)}
+    nav ul{display:flex; gap:20px; list-style:none; padding:0; margin:0}
+    nav a{font-weight:600; color:var(--muted)}
+    nav a:hover{color:var(--ink)}
+    .hamburger{display:none; background:transparent; border:0; font-size:1.5rem}
+
+    /* Hero */
+    .hero{padding:64px 0 36px; position:relative; overflow:hidden}
+    .hero .bg{position:absolute; inset:-20% -20% auto -20%; height:480px; background:radial-gradient(60% 60% at 20% 20%, rgba(107,70,193,.12), transparent 50%), radial-gradient(60% 60% at 80% 0%, rgba(20,184,166,.12), transparent 40%)}
+    .hero .content{position:relative}
+    h1{font-size:clamp(2rem, 3vw + 1rem, 3.25rem); line-height:1.1; margin:0 0 12px}
+    .lead{font-size:clamp(1.05rem, .8vw + .9rem, 1.2rem); color:var(--muted)}
+    .hero-cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px}
+    .statbar{display:flex; gap:18px; align-items:center; margin-top:18px; color:var(--muted)}
+    .stat{padding:10px 14px; background:#fff; border:1px solid #e2e8f0; border-radius:12px; box-shadow:var(--shadow)}
+
+    /* Cards */
+    .cards{grid-template-columns: repeat(12, 1fr)}
+    .card{grid-column: span 4; background:var(--card); border:1px solid #e2e8f0; border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); transition:transform .15s ease}
+    .card:hover{transform:translateY(-4px)}
+    .card h3{margin:8px 0 6px}
+    .card p{margin:0; color:var(--muted)}
+    .icon{width:40px; height:40px; border-radius:10px; display:grid; place-items:center; background:#f1f5f9; box-shadow:inset 0 0 0 1px #e2e8f0}
+
+    /* Sections */
+    section{padding:50px 0}
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:18px}
+    .section-head h2{margin:0; font-size:1.8rem}
+    .muted{color:var(--muted)}
+
+    /* Showcase */
+    .showcase{grid-template-columns: repeat(12, 1fr)}
+    .showcase .shot{grid-column: span 6; background:linear-gradient(180deg,#f8fafc,#fff); border:1px solid #e2e8f0; border-radius:16px; overflow:hidden; box-shadow:var(--shadow)}
+    .shot .bar{display:flex; gap:6px; padding:10px; background:#0b1220; color:#94a3b8; align-items:center}
+    .dots{display:flex; gap:6px}
+    .dot{width:10px; height:10px; border-radius:999px; background:#334155}
+    .shot .frame{padding:14px}
+
+    /* Process */
+    .steps{grid-template-columns: repeat(4, 1fr)}
+    .step{background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:18px; box-shadow:var(--shadow)}
+    .step .num{font-weight:800; font-size:1.6rem; color:var(--plum)}
+
+    /* Testimonials */
+    .testis{grid-template-columns: repeat(3, 1fr)}
+    .testi{background:#0a2540; color:#e2e8f0; border-radius:16px; padding:20px; box-shadow:var(--shadow)}
+    .testi .who{display:flex; align-items:center; gap:10px; margin-top:12px}
+    .avatar{width:38px; height:38px; border-radius:999px; background:linear-gradient(135deg, #94a3b8, #64748b)}
+
+    /* Contact */
+    .contact-wrap{display:grid; grid-template-columns: 1.1fr .9fr; gap:24px}
+    form{display:grid; gap:12px}
+    input, textarea, select{padding:12px 14px; border-radius:12px; border:1px solid #cbd5e1; font:inherit}
+    input:focus, textarea:focus, select:focus{outline:2px solid var(--ring); border-color:var(--mint)}
+    textarea{min-height:120px}
+    .notice{font-size:.9rem; color:var(--muted)}
+    .mapbox{background:#0b1220; color:#cbd5e1; border-radius:16px; padding:18px}
+
+    /* Footer */
+    footer{background:#0b1220; color:#cbd5e1; padding:30px 0}
+    .fgrid{display:grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap:24px}
+    .subtle{color:#94a3b8}
+    .fine{border-top:1px solid #334155; margin-top:16px; padding-top:16px; font-size:.9rem; color:#94a3b8}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .card{grid-column: span 6}
+      .showcase .shot{grid-column: span 12}
+      .steps{grid-template-columns: repeat(2, 1fr)}
+      .testis{grid-template-columns: 1fr}
+      .pricing{grid-template-columns: 1fr}
+      .contact-wrap{grid-template-columns: 1fr}
+      .fgrid{grid-template-columns: 1fr 1fr}
+    }
+    @media (max-width: 720px){
+      nav ul{display:none}
+      .hamburger{display:block}
+      .cards{grid-template-columns: repeat(6, 1fr)}
+      .card{grid-column: span 6}
+      .steps{grid-template-columns: 1fr}
+      .fgrid{grid-template-columns: 1fr}
+    }
+    /* Utility */
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+    .mt-2{margin-top:8px}
+    .mt-4{margin-top:16px}
+    .mt-6{margin-top:24px}
+    .mt-8{margin-top:32px}
+    .mt-10{margin-top:40px}
+    .center{display:flex; align-items:center; justify-content:center}
+    .tag{display:inline-block; padding:.3rem .6rem; border-radius:999px; background:#f1f5f9; color:#0f172a; font-weight:600; font-size:.78rem}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Devlyrics home">
+        <span class="logo" aria-hidden="true">🎵</span>
+        <span>Devlyrics</span>
+      </a>
+      <button class="hamburger" aria-label="Toggle Menu" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+      <nav>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="bg" aria-hidden="true"></div>
+    <div class="container content">
+      <span class="chip">Lahore · Software House</span>
+      <h1>We design, build & test software that ships on time.</h1>
+      <p class="lead">Devlyrics is a full‑stack team crafting <strong>web apps</strong>, <strong>mobile apps</strong>, and bulletproof <strong>SQA</strong>. From Figma to production, we partner with you to launch fast and iterate safely.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn primary">Get a free quote</a>
+        <a href="#work" class="btn outline">See recent work</a>
+      </div>
+      <div class="statbar">
+        <div class="stat">✅ 40+ projects delivered</div>
+        <div class="stat">⏱ Avg. sprint: 2 weeks</div>
+        <div class="stat">🛡 98% test coverage on core</div>
+      </div>
+    </div>
+  </main>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>Services</h2>
+        <p class="muted">Built for startups and SMEs who value quality and speed.</p>
+      </div>
+      <div class="grid cards">
+        <article class="card">
+          <div class="icon" aria-hidden="true">💻</div>
+          <h3>Web Development</h3>
+          <p>Modern, scalable web apps using React, Next.js, Node, and Laravel. CI/CD and cloud‑native by default.</p>
+          <ul class="mt-4 muted">
+            <li>UX/UI from wireframe to component library</li>
+            <li>REST & GraphQL APIs, integrations</li>
+            <li>DevOps: Docker, CI/CD pipelines</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">📱</div>
+          <h3>Mobile App Development</h3>
+          <p>iOS & Android with Flutter/React Native. Smooth performance, offline-first, analytics & store deployment.</p>
+          <ul class="mt-4 muted">
+            <li>Native-feel UX with rapid iteration</li>
+            <li>Push, auth, payments, maps</li>
+            <li>Play Store & App Store launch</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🧪</div>
+          <h3>SQA & QA Automation</h3>
+          <p>Coverage you can trust. Test planning, manual QA, and automation across web & mobile.</p>
+          <ul class="mt-4 muted">
+            <li>Test strategy & plans</li>
+            <li>Selenium, Cypress, Appium suites</li>
+            <li>CI test pipelines & reporting</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="container">
+      <div class="section-head">
+        <h2>Selected Work</h2>
+        <span class="tag">Case studies on request</span>
+      </div>
+      <div class="grid showcase">
+        <div class="shot">
+          <div class="bar"><div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><span class="muted" style="margin-left:8px">Dashboard — Fintech</span></div>
+          <div class="frame">
+            <p class="muted">A modular analytics dashboard with role-based access and SOC2-friendly audit trails. Reduced monthly ops by 23%.</p>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="bar"><div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><span class="muted" style="margin-left:8px">Mobile — Logistics</span></div>
+          <div class="frame">
+            <p class="muted">Driver & dispatcher apps with offline route caching and live ETAs. 99.95% crash‑free sessions over 3 months.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="container">
+      <div class="section-head">
+        <h2>Process</h2>
+        <p class="muted">Clear steps. Predictable outcomes.</p>
+      </div>
+      <div class="grid steps">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Discover</h3>
+          <p class="muted">Free consult, scope, milestones, and budget. We turn ideas into a lean plan.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h3>Design</h3>
+          <p class="muted">Wireframes → polished UI kit. Accessibility & responsive by design.</p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Build</h3>
+          <p class="muted">Agile sprints, weekly demos. Clean code, docs, and PR reviews.</p>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <h3>Test & Ship</h3>
+          <p class="muted">Automated & manual QA, security checks, and a smooth release.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2>About Devlyrics</h2>
+        <p class="muted">We’re a small, senior team based in Lahore.</p>
+      </div>
+      <div class="grid" style="grid-template-columns:1.2fr .8fr; gap:24px">
+        <div>
+          <p>Founded in 2021, Devlyrics partners with founders and product teams to ship reliable software. We combine taste in design with engineering discipline and strong QA to keep releases calm and predictable.</p>
+          <ul class="mt-4 muted">
+            <li>• HQ: 3rd Floor, Edgeview Plaza, Johar Town, Lahore</li>
+            <li>• Hours: Mon–Fri, 10:00–18:00 PKT</li>
+            <li>• NTN: 1234567-8 (for invoicing only)</li>
+          </ul>
+          <div class="mt-6">
+            <span class="tag">React</span> <span class="tag">Next.js</span> <span class="tag">Node.js</span> <span class="tag">Laravel</span> <span class="tag">Flutter</span> <span class="tag">Cypress</span> <span class="tag">Selenium</span>
+          </div>
+        </div>
+        <div class="testi" aria-label="Client testimonial">
+          <p>“Devlyrics shipped our MVP in six weeks with a test suite we still rely on. Communication and code quality were top‑notch.”</p>
+          <div class="who">
+            <div class="avatar" aria-hidden="true"></div>
+            <div>
+              <strong>H. Khan</strong>
+              <div class="subtle">Founder, PakCourier</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p class="muted">Tell us about your project. We reply within one business day.</p>
+      </div>
+      <div class="contact-wrap">
+        <form onsubmit="return submitForm(event)">
+          <label class="sr-only" for="name">Name</label>
+          <input id="name" name="name" placeholder="Full name" required />
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Email address" required />
+          <label class="sr-only" for="service">Service</label>
+          <select id="service" name="service">
+            <option>Web Development</option>
+            <option>Mobile App Development</option>
+            <option>SQA / QA Automation</option>
+            <option>Other</option>
+          </select>
+          <label class="sr-only" for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Project goals, timeline, and budget…" required></textarea>
+          <label class="sr-only" for="budget">Budget</label>
+          <button class="btn primary" type="submit">Send message</button>
+          <p class="notice">By submitting, you agree to our <a href="#">privacy policy</a>. We never share your data.</p>
+        </form>
+        <aside>
+          <div class="mapbox">
+            <strong>Devlyrics — Lahore</strong>
+            <p class="subtle">3rd Floor, Edgeview Plaza, Johar Town, Lahore</p>
+            <p>📞 +92 42 3890 1234<br/>✉️ info@devlyrics.studio</p>
+            <p class="subtle">Google Maps preview disabled in demo. Replace this box with an iframe map.</p>
+          </div>
+          <div class="mt-4">
+            <span class="tag">GST Invoices</span>
+            <span class="tag">NDA Friendly</span>
+            <span class="tag">Remote-first</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="fgrid">
+        <div>
+          <div class="brand"><span class="logo" aria-hidden="true">🎵</span><span>Devlyrics</span></div>
+          <p class="subtle mt-4">We build robust, user‑centric products with reliable QA. Lahore, Pakistan.</p>
+        </div>
+        <div>
+          <strong>Company</strong>
+          <ul class="subtle" style="list-style:none; padding:0; margin-top:10px; display:grid; gap:8px">
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <strong>Services</strong>
+          <ul class="subtle" style="list-style:none; padding:0; margin-top:10px; display:grid; gap:8px">
+            <li><a href="#services">Web Development</a></li>
+            <li><a href="#services">Mobile Apps</a></li>
+            <li><a href="#services">SQA & QA</a></li>
+          </ul>
+        </div>
+        <div>
+          <strong>Contact</strong>
+          <ul class="subtle" style="list-style:none; padding:0; margin-top:10px; display:grid; gap:8px">
+            <li>hello@devlyrics.studio</li>
+            <li>+92 42 3890 1234</li>
+            <li>Johar Town, Lahore</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fine">© <span id="year"></span> Devlyrics. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple mobile menu toggle for small screens
+    (function(){
+      const ul = document.querySelector('nav ul');
+      const mq = window.matchMedia('(max-width: 720px)');
+      function apply(){ if(mq.matches){ ul.classList.remove('open'); ul.style.display='none'; } else { ul.style.display='flex'; } }
+      apply(); mq.addEventListener('change', apply);
+      document.querySelector('.hamburger').addEventListener('click', ()=>{
+        const open = ul.style.display==='flex';
+        ul.style.display = open ? 'none' : 'flex';
+      });
+    })();
+
+    // Friendly fake submission
+    function submitForm(e){
+      e.target.reset();
+      return false;
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
